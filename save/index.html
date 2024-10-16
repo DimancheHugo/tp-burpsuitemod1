@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afficher l'image</title>
+</head>
+<body>
+    <h1>Afficher une image</h1>
+    <p>Cliquez sur le bouton pour afficher l'image "2.jpeg".</p>
+    
+    <button onclick="getImage()">Afficher l'image</button>
+    <div id="image-container"></div>
+    
+    <h2>Administration</h2>
+    <button onclick="window.location.href='admin.html'">Accéder à l'administration</button>
+
+    <script>
+        function getImage() {
+            const filename = '2.jpeg'; // Nom de l'image à afficher
+            const url = `/get_file.php?filename=${filename}`; // URL pour le script PHP
+
+            // Supprimer le contenu précédent
+            const container = document.getElementById('image-container');
+            container.innerHTML = ''; 
+
+            // Créer un élément pour afficher le fichier
+            const imgElement = document.createElement('img');
+            imgElement.src = url; // URL avec le paramètre
+            imgElement.alt = 'Image récupérée';
+            imgElement.width = 400;
+
+            // Ajouter l'élément dans le conteneur
+            container.appendChild(imgElement);
+        }
+    </script>
+</body>
+</html>
